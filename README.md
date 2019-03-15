@@ -23,7 +23,7 @@ mobile first responsive;
 6. Sass
 
 ### Library
-1.  Vue.js --- ajax
+1.  Vue.js --- fetch in API
 
 
 ### License
