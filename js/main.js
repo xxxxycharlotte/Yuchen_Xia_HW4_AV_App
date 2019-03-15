@@ -45,14 +45,14 @@ const vm = new Vue({
 
         // the localstorage session will persist until logout
 
-        // if (localStorage.getItem("cachedUser")) {
-        //   let user = JSON.parse(localStorage.getItem("cachedUser"));
-        //   this.authenticated = true;
-        //   // params not setting properly, so this route needs to be debugged a bit...
-        //   this.$router.push({ name: "home", params: { currentuser: user }});
-        // } else {
-        //   this.$router.push({ path: "/login"} );
-        // }
+        if (localStorage.getItem("cachedUser")) {
+          let user = JSON.parse(localStorage.getItem("cachedUser"));
+          this.authenticated = true;
+          // params not setting properly, so this route needs to be debugged a bit...
+          this.$router.push({ name: "home", params: { currentuser: user }});
+        } else {
+          this.$router.push({ path: "/login"} );
+        }
     },
 
     methods: {
@@ -87,10 +87,10 @@ const vm = new Vue({
 router.beforeEach((to, from, next) => {
     console.log('router guard fired!', to, from, vm.authenticated);
 
-    // if (vm.authenticated === false) {
-    //     next("/login");
-    // } else {
-    //     next();
-    // }
+    if (vm.authenticated === false) {
+        next("/login");
+    } else {
+        next();
+    }
     next();
 });
